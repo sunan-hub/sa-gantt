@@ -6,7 +6,7 @@
   "author": "sunan",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sunan-hub/sa-gantt.git"
+    "url": "git+https://github.com/sunan-hub/sa-gantt.git"
   },
   "private": true,
   "scripts": {
@@ -23,5 +23,10 @@
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "typescript": "^5.0.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/sunan-hub/sa-gantt/issues"
+  },
+  "homepage": "https://github.com/sunan-hub/sa-gantt#readme",
+  "license": "ISC"
 }
