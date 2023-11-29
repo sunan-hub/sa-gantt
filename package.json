@@ -1,6 +1,6 @@
 {
   "name": "sa-gantt",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "sa-gantt@0.0.1",
   "main": "@/layouts/index.tsx",
   "author": "sunan",
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/sunan-hub/sa-gantt.git"
   },
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "umi dev",
     "build": "umi build",
