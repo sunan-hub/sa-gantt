@@ -1,8 +1,7 @@
-import React, { useMemo, useLayoutEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { NodeDataType, GantRowProps, ThreadType, ShowNodeDataType } from '@/types/gantt';
 import { sortDataList } from '@/utils';
 import './index.less';
-
 
 // 转换成渲染的节点数据
 export const convertToShowNodeList = (dataList: NodeDataType[]) => {
@@ -46,6 +45,12 @@ export const convertToThread = (dataList: NodeDataType[]) => {
 
 // 甘特图行结构
 const GanttRow = (props: GantRowProps) => {
+    // 记录线程的最大高度
+    const [threadMaxHeight, setThreadMaxHeight] = useState(0);
+    // 最大x节点的信息
+    const [maxXNode, setMaxXNode] = useState<NodeDataType>();
+    // 最大x节点的宽度
+    const [maxXNodeWidth, setMaxXNodeWidth] = useState(0);
     // 整个GanttRow的长度和高度
     const threadArea = useMemo(() => {
         let width = 0;
@@ -63,7 +68,21 @@ const GanttRow = (props: GantRowProps) => {
         return result;
     }, [props.dataList]);
 
-    return <div className='gantt-row-wrap' style={{ width: threadArea.width, height: threadArea.height }}>
+    // 监听最大x节点的变化
+    useEffect(() => {
+        if (props.dataList.length) {
+            const sortList = sortDataList(props.dataList, 'x');
+            setMaxXNode(sortList[sortList.length - 1]);
+        }
+    }, [props.dataList]);
+
+    return <div
+        className='gantt-row-wrap'
+        style={{
+            width: threadArea.width + maxXNodeWidth,
+            height: threadArea.height + (props.threadHeight || threadMaxHeight)
+        }}
+    >
         {threadList.map((threadRow) => {
             return props.threadRowRender
                 ? props.threadRowRender(threadRow)
@@ -72,7 +91,7 @@ const GanttRow = (props: GantRowProps) => {
                     key={threadRow.thread}
                     style={{
                         top: `${threadRow.thread}px`,
-                        height: props.threadHeight,
+                        height: props.threadHeight || threadMaxHeight,
                         width: threadArea.width
                     }}
                 >
@@ -81,8 +100,19 @@ const GanttRow = (props: GantRowProps) => {
                             ? props.nodeRender(item)
                             : <div
                                 key={item.key}
+                                id={`gantt-node-${item.key}`}
                                 className='node-wrap'
                                 style={{ left: `${item.x}px` }}
+                                ref={(node) => {
+                                    if (node) {
+                                        const nodeHeight = node.clientHeight;
+                                        setThreadMaxHeight(Math.max(threadMaxHeight, nodeHeight));
+                                        if (maxXNode && maxXNode.key === item.key) {
+                                            // 记录最大x节点的宽度
+                                            setMaxXNodeWidth(node.clientWidth);
+                                        }
+                                    }
+                                }}
                             >
                                 {/* 节点 */}
                                 <div className='node' />
