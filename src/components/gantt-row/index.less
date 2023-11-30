@@ -1,0 +1,31 @@
+.gantt-row-wrap {
+    position: relative;
+    .thread-row {
+        height: 40px;
+        position: absolute;
+        .node-wrap {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            display: inline-block;
+            transform: translate(0, -50%);
+            .node {
+                z-index: 2;
+                position: relative;
+                width: 10px;
+                height: 16px;
+                background: url(./icons/node.svg) no-repeat center center;
+            }
+            .line {
+                z-index: 1;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 10px;
+                height: 16px;
+                background-color: #beffef;
+                transform: translate(0, -50%);
+            }
+        }
+    }
+}

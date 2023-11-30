@@ -2,7 +2,6 @@
   "name": "sa-gantt",
   "version": "0.0.3",
   "description": "sa-gantt@0.0.1",
-  "main": "@/layouts/index.tsx",
   "author": "sunan",
   "repository": {
     "type": "git",
