@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import GanttTable from "../../components/gantt-table";
+import GanttRow from "../../components/gantt-row";
 import {
     ConfineType,
     GantHeaderProps,
@@ -373,3 +374,9 @@ const Home = () => {
 };
 
 export default Home;
+
+// 导出甘特图组件
+export { GanttRow, GanttTable };
+
+// 导出类型
+export * from '../../types/gantt';
