@@ -1,0 +1,74 @@
+.sa-gantt-table-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    border: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    /* 全局滚动条 */
+    *&::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    *&::-webkit-scrollbar-thumb {
+        background: hsla(0, 0%, 70.2%, 0.6);
+        border-radius: 10px;
+    }
+    *&::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 10px;
+    }
+    // 全局样式
+    * {
+        box-sizing: border-box;
+    }
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    .no-data {
+        width: 100%;
+        height: 100%;
+        background: url("./icons/no-data.svg") no-repeat center;
+    }
+    // 绘制行
+    .sa-gantt-row-wrap {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        border-bottom: 1px solid #e8e8e8;
+        &:last-child {
+            border-bottom: none;
+        }
+        .gantt-row-label {
+            padding: 16px;
+            font-weight: 700;
+            font-size: 16px;
+            position: sticky;
+            left: 0;
+            background-color: #ffffff;
+            border-right: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            z-index: 3;
+        }
+    }
+    .critical-path-start,
+    .critical-path-center,
+    .critical-path-end {
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .critical-path-start {
+        background-color: #ff8d0c;
+        transform: translateX(-50%);
+    }
+    .critical-path-center {
+        background-color: #ff8d0c;
+    }
+    .critical-path-end {
+        background-color: #ff8d0c;
+        transform: translateX(-50%);
+    }
+}

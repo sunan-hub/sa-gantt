@@ -1,7 +1,7 @@
 {
   "name": "sa-gantt",
-  "version": "0.0.4",
-  "description": "sa-gantt@0.0.1",
+  "version": "0.0.5",
+  "description": "sa-gantt@0.0.5",
   "author": "sunan",
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "moment": "^2.30.1",
     "umi": "^4.0.88"
   },
   "devDependencies": {

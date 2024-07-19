@@ -1,4 +1,4 @@
-.gantt-row-wrap {
+.gantt-row-content {
     position: relative;
     .thread-row {
         position: absolute;
@@ -6,6 +6,19 @@
         .node-wrap {
             position: absolute;
             display: inline-block;
+            .thread-name {
+                position: absolute;
+                top: 50%;
+                left: -16px;
+                transform: translate(-100%, -50%);
+                font-size: 14px;
+                font-weight: 600;
+                color: #000000;
+                width: 100px;
+                text-align: right;
+                min-height: 24px;
+                line-height: 24px;
+            }
             .node {
                 z-index: 2;
                 position: relative;
