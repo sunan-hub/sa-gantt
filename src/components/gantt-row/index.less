@@ -1,0 +1,45 @@
+.gantt-row-content {
+    position: relative;
+    .thread-row {
+        position: absolute;
+        background-color: bisque;
+        .node-wrap {
+            position: absolute;
+            display: inline-block;
+            .thread-name {
+                position: absolute;
+                top: 50%;
+                left: -16px;
+                transform: translate(-100%, -50%);
+                font-size: 14px;
+                font-weight: 600;
+                color: #000000;
+                width: 100px;
+                text-align: right;
+                min-height: 24px;
+                line-height: 24px;
+            }
+            .node {
+                z-index: 2;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                width: 10px;
+                height: 16px;
+                background: url(./icons/node.svg) no-repeat center center;
+                background-size: 100% 100%;
+                transform: translate(-50%, 0);
+            }
+            .line {
+                z-index: 1;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 10px;
+                height: 16px;
+                background-color: #beffef;
+                transform: translate(0, -50%);
+            }
+        }
+    }
+}

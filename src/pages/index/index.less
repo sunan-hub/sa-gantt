@@ -1,0 +1,208 @@
+.sa-gantt-wrap {
+    padding: 8px;
+    width: 100%;
+    height: calc(100vh - 16px);
+    position: relative;
+    box-sizing: border-box;
+    // 全局样式
+    * {
+        box-sizing: border-box;
+    }
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    .sa-gantt-table {
+        height: calc(100% - 32px);
+    }
+    .gantt-wrap-lodaing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    // 符号说明
+    .symbol-description-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 8px;
+        .symbol-wrap {
+            display: flex;
+            align-items: center;
+            margin-right: 12px;
+            .symbol {
+                margin-right: 4px;
+                width: 10px;
+                height: 16px;
+                background: url(./icons/node-not-started.svg) no-repeat center
+                    center;
+                &.not-started {
+                    background: url(./icons/node-not-started.svg) no-repeat
+                        center center;
+                }
+                &.in-progress {
+                    background: url(./icons/node-in-progress.svg) no-repeat
+                        center center;
+                }
+                &.finished {
+                    background: url(./icons/node-finished.svg) no-repeat center
+                        center;
+                }
+                &.milestone {
+                    width: 16px;
+                    background: url(./icons/milestone.svg) no-repeat center
+                        center;
+                }
+                &.critical-path {
+                    width: 32px;
+                    height: 3px;
+                    background: #ff8d0c;
+                }
+            }
+        }
+    }
+    // 甘特图顶部
+    .sa-gantt-table-header {
+        display: flex;
+        height: max-content;
+        position: sticky;
+        top: 0;
+        background-color: #ffffff;
+        z-index: 4;
+        width: max-content;
+        border-bottom: 1px solid #e8e8e8;
+        // 当前视图日期
+        .table-header-label {
+            padding: 12px;
+            border-right: 1px solid #e8e8e8;
+            position: sticky;
+            left: 0;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .today-btn {
+                padding: 4px 8px;
+                border-radius: 4px;
+                color: rgb(0, 140, 255);
+                cursor: pointer;
+                &:hover {
+                    background-color: #e8e8e8;
+                }
+            }
+        }
+        // 年刻度
+        .year-wrap {
+            .year-text {
+                padding: 12px;
+            }
+            .month-wrap {
+                display: flex;
+                .month-text {
+                    padding: 12px;
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+    // 节点样式
+    .node-wrap {
+        position: absolute;
+        display: inline-block;
+        .thread-name {
+            position: absolute;
+            top: 50%;
+            left: -16px;
+            transform: translate(-100%, -50%);
+            font-size: 14px;
+            font-weight: 600;
+            color: #000000;
+            width: 100px;
+            text-align: right;
+            min-height: 24px;
+            line-height: 24px;
+        }
+        .gantt-node {
+            z-index: 2;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            width: 10px;
+            height: 16px;
+            background: url(./icons/node-not-started.svg) no-repeat center
+                center;
+            transform: translate(-50%, 0);
+            &.not-started {
+                background: url(./icons/node-not-started.svg) no-repeat center
+                    center;
+            }
+            &.in-progress {
+                background: url(./icons/node-in-progress.svg) no-repeat center
+                    center;
+            }
+            &.finished {
+                background: url(./icons/node-finished.svg) no-repeat center
+                    center;
+            }
+            &.milestone {
+                width: 16px;
+                background: url(./icons/milestone.svg) no-repeat center center;
+            }
+        }
+        .gantt-line {
+            z-index: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 10px;
+            height: 16px;
+            background-color: #f1f2f5;
+            transform: translate(0, -50%);
+            &.milestone {
+                height: 6px;
+                background: rgb(217, 3, 28);
+            }
+        }
+        // 节点要显示的内容
+        .node-text {
+            position: absolute;
+            white-space: nowrap;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            &.up {
+                flex-direction: column;
+            }
+            &.down {
+                flex-direction: column-reverse;
+                top: 0;
+                transform: translateX(-50%) translateY(-100%);
+            }
+        }
+        // 关键路径
+        .critical-path {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 1000px;
+            width: 1px;
+            background-color: #000000;
+        }
+    }
+    // 鼠标悬浮样式
+    .node-tooltip {
+        background-color: #ffffff;
+        color: #000000;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+        .semi-tooltip-icon-arrow {
+            display: none;
+        }
+    }
+}
